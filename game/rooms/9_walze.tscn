@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=4 uid="uid://cwmgie2cknm3m"]
+[gd_scene load_steps=4 format=4 uid="uid://cwmgie2cknm3m"]
 
 [ext_resource type="PackedScene" uid="uid://cridpwes254sm" path="res://game/room_template/level_template.tscn" id="1_qvkur"]
+[ext_resource type="Script" uid="uid://d4di28trqpm2u" path="res://walze_test.gd" id="2_wnxrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqlvc"]
+size = Vector2(1024, 56)
 
 [node name="level_walze" instance=ExtResource("1_qvkur")]
 
@@ -12,3 +16,24 @@ tile_map_data = PackedByteArray("AAAAAA4AAAAKAAAAAAABAA4AAAAKAAAAAAACAA4AAAADAAA
 
 [node name="tilemap_game_data" parent="." index="2"]
 tile_map_data = PackedByteArray("AAAUAAAAAAACAAAAAAAVAAAAAAACAAAAAAAWAAAAAAACAAAAAAAAAAsAAAAAAAIAAAAAAAwAAAAAAAIAAAAAAA0AAAAAAAIAAAACAAwAAAABAAIAAAAVAAIAAAACAAEAAAA=")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="7"]
+position = Vector2(1380, 806)
+script = ExtResource("2_wnxrg")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" index="0"]
+offset_left = -513.0
+offset_top = -29.0
+offset_right = 514.0
+offset_bottom = 28.0
+color = Color(0.69, 0.0621, 0.240005, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D" index="1"]
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 18.0
+offset_bottom = 18.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="2"]
+shape = SubResource("RectangleShape2D_aqlvc")

@@ -11,7 +11,9 @@ var create_new_dungeon : bool = true
 
 
 func _ready() -> void:
-	change_scene(START_ROOM, direction.NORTH)
+	dungeon_generator.create_dungeon(80)
+	var first_room = dungeon_generator.get_room_path(current_position)
+	change_scene(first_room, direction.NORTH)
 	
 func change_scene(path: String, dir: direction) -> void:
 	# Bestehende Scene loeschen
@@ -42,6 +44,12 @@ func _on_room_exit(dir: direction):
 	var new_room_path = dungeon_generator.get_room_path(current_position)
 	print(new_room_path)
 	change_scene(new_room_path, get_opposite_side(dir))
+	
+	print(dungeon_generator.get_room_type(current_position))
+	if dungeon_generator.get_room_type(current_position) == 90:
+		# TODO: aktueller bossraum muss irgendwie übergeben werden können und current_position fixen
+		dungeon_generator.create_dungeon(90)
+		current_position = Vector2i(3, 0)
 
 func get_opposite_side(dir: direction):
 	if dir == direction.NORTH:
@@ -55,5 +63,5 @@ func get_opposite_side(dir: direction):
 
 
 func _on_player_died():
-	print("Died")
+	#print("Died")
 	change_scene(current_scene_path, current_direction)

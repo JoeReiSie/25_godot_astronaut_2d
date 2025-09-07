@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	if tile_data:
 		var exit_id = tile_data.get_custom_data("exits")
 		if exit_id:
-			print(exit_id)
+			#print(exit_id)
 			player_exit = exit_id
 			get_tree().paused = true
 			fade_screen.fade_out()
