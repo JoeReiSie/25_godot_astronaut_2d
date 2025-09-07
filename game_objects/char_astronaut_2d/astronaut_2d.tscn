@@ -1,0 +1,250 @@
+[gd_scene load_steps=32 format=3 uid="uid://bnvf11e7thsf8"]
+
+[ext_resource type="Script" uid="uid://dnoagwko1kqna" path="res://game_objects/char_astronaut_2d/astronaut_2d.gd" id="1_8jxkq"]
+[ext_resource type="Texture2D" uid="uid://b1eu3geguoq0w" path="res://game_objects/char_astronaut_2d/assets/wolke.png" id="1_dbl86"]
+[ext_resource type="Texture2D" uid="uid://dm0k7r1w0dsub" path="res://game_objects/char_astronaut_2d/assets/0003.png" id="3_hnv4g"]
+[ext_resource type="Texture2D" uid="uid://lu8gyuarv6vk" path="res://game_objects/char_astronaut_2d/assets/0001.png" id="3_i3ys8"]
+[ext_resource type="Texture2D" uid="uid://bqj5tg2cbkwwe" path="res://game_objects/char_astronaut_2d/assets/0002.png" id="4_80k0s"]
+[ext_resource type="Script" uid="uid://dtkjf7xtoq748" path="res://game_objects/char_astronaut_2d/comp_2d_move_astro.gd" id="4_hnv4g"]
+[ext_resource type="Texture2D" uid="uid://b30a4rpm2c3lj" path="res://game_objects/char_astronaut_2d/assets/0004.png" id="6_nilt8"]
+[ext_resource type="Texture2D" uid="uid://dkauj46047vhe" path="res://game_objects/char_astronaut_2d/assets/0005.png" id="7_0vos6"]
+[ext_resource type="Texture2D" uid="uid://c2o6eamgx12yw" path="res://game_objects/char_astronaut_2d/assets/0006.png" id="8_ihm72"]
+[ext_resource type="Texture2D" uid="uid://bfyixbwk6ek4s" path="res://game_objects/char_astronaut_2d/assets/0007.png" id="9_xjluf"]
+[ext_resource type="Texture2D" uid="uid://mjuynque7t4n" path="res://game_objects/char_astronaut_2d/assets/0008.png" id="10_fohhi"]
+[ext_resource type="Texture2D" uid="uid://c7fjqlpsxp4y5" path="res://game_objects/char_astronaut_2d/assets/0009.png" id="11_spu3a"]
+[ext_resource type="Texture2D" uid="uid://crbmx5loabyv0" path="res://game_objects/char_astronaut_2d/assets/0010.png" id="12_njwfu"]
+[ext_resource type="Texture2D" uid="uid://dxvmohyrht54u" path="res://game_objects/char_astronaut_2d/assets/ring_2D.png" id="13_0vos6"]
+[ext_resource type="Script" uid="uid://b34rpqwpvtom7" path="res://game_objects/char_astronaut_2d/comp_input_keyboard.gd" id="14_80k0s"]
+[ext_resource type="Script" uid="uid://bqfquo0ogteuc" path="res://game_objects/char_astronaut_2d/comp_input_controller.gd" id="15_nilt8"]
+[ext_resource type="Script" uid="uid://b23ab3xqso1k3" path="res://core/components/general/fsm_with_nodes/comp_fsm_node.gd" id="17_njwfu"]
+[ext_resource type="Script" uid="uid://vkgqvioqo7bv" path="res://game_objects/char_astronaut_2d/wait.gd" id="18_m8wna"]
+[ext_resource type="Script" uid="uid://bixwyhcqc7e2d" path="res://game_objects/char_astronaut_2d/fall.gd" id="19_qferc"]
+[ext_resource type="Script" uid="uid://d4mpu25c6agax" path="res://game_objects/char_astronaut_2d/fly.gd" id="20_i61da"]
+[ext_resource type="Script" uid="uid://kwi61ldexkao" path="res://game_objects/char_astronaut_2d/die.gd" id="21_v66gy"]
+
+[sub_resource type="Curve" id="Curve_svjxb"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0.514233), 0.0, 0.0, 0, 0, Vector2(0.784091, 2.39326), 0.0, 0.0, 0, 0, Vector2(1, 1.81282), -5.75281, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_i3ys8"]
+offsets = PackedFloat32Array(0.792982, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.89, 0.89, 0.89, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8wna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i3ys8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_80k0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hnv4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nilt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0vos6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ihm72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xjluf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fohhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_spu3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_njwfu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="Curve" id="Curve_nilt8"]
+_limits = [1.0, 1.63601, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.758796, 0, 0, Vector2(1, 1.63601), 0.106302, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0vos6"]
+offsets = PackedFloat32Array(0.203509, 0.908772)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_te25c"]
+radius = 13.0
+height = 58.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_njwfu"]
+radius = 15.0
+height = 62.0
+
+[sub_resource type="Animation" id="Animation_80k0s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("char/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("char/particle_schub:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 11)]
+}
+
+[sub_resource type="Animation" id="Animation_i3ys8"]
+resource_name = "rotation"
+length = 0.450005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("char/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("char/particle_schub:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.450005),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(9, 10), Vector2(-9, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nilt8"]
+_data = {
+&"RESET": SubResource("Animation_80k0s"),
+&"rotation": SubResource("Animation_i3ys8")
+}
+
+[node name="astronaut_2d" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_8jxkq")
+
+[node name="char" type="Marker2D" parent="."]
+
+[node name="particle_schub" type="CPUParticles2D" parent="char"]
+unique_name_in_owner = true
+position = Vector2(10, 11)
+scale = Vector2(0.989457, 1.49945)
+emitting = false
+amount = 30
+texture = ExtResource("1_dbl86")
+lifetime = 0.64
+randomness = 1.0
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 10)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+scale_amount_min = 0.2
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_svjxb")
+color_ramp = SubResource("Gradient_i3ys8")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="char"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_m8wna")
+
+[node name="ring" type="Sprite2D" parent="char"]
+texture = ExtResource("13_0vos6")
+
+[node name="explosion" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 15
+texture = ExtResource("1_dbl86")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(10, 20)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_nilt8")
+color_ramp = SubResource("Gradient_0vos6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_te25c")
+
+[node name="hitarea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitarea"]
+shape = SubResource("CapsuleShape2D_njwfu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nilt8")
+}
+
+[node name="comp_2d_move_astro" type="Node" parent="." node_paths=PackedStringArray("obj")]
+script = ExtResource("4_hnv4g")
+obj = NodePath("..")
+
+[node name="comp_input_keyboard" type="Node" parent="."]
+script = ExtResource("14_80k0s")
+
+[node name="comp_input_controller" type="Node" parent="."]
+script = ExtResource("15_nilt8")
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("17_njwfu")
+initial_state = NodePath("wait")
+metadata/_custom_type_script = "uid://b23ab3xqso1k3"
+
+[node name="wait" type="Node" parent="FSM"]
+script = ExtResource("18_m8wna")
+metadata/_custom_type_script = "uid://dvv24dt731g45"
+
+[node name="fall" type="Node" parent="FSM"]
+script = ExtResource("19_qferc")
+metadata/_custom_type_script = "uid://dvv24dt731g45"
+
+[node name="fly" type="Node" parent="FSM"]
+script = ExtResource("20_i61da")
+metadata/_custom_type_script = "uid://dvv24dt731g45"
+
+[node name="die" type="Node" parent="FSM"]
+script = ExtResource("21_v66gy")
+metadata/_custom_type_script = "uid://dvv24dt731g45"
+
+[connection signal="finished" from="explosion" to="." method="_on_explosion_finished"]
+[connection signal="area_entered" from="hitarea" to="." method="_on_hitarea_area_entered"]
+[connection signal="body_entered" from="hitarea" to="." method="_on_hitarea_body_entered"]

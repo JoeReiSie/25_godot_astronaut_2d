@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5eulpuqgg5nq"]
+
+[ext_resource type="Script" uid="uid://bmtv37hioixs" path="res://core/components/2d/comp_2d_viewbox/comp_2d_viewbox.gd" id="1_5jcbh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jcbh"]
+resource_local_to_scene = true
+radius = 300.0
+
+[node name="Comp2dViewbox" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_5jcbh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5jcbh")

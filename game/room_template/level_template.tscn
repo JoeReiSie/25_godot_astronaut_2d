@@ -1,0 +1,174 @@
+[gd_scene load_steps=13 format=4 uid="uid://cridpwes254sm"]
+
+[ext_resource type="Texture2D" uid="uid://bxdwhj4boqe1g" path="res://game/room_template/assets/wall.png" id="1_06ulx"]
+[ext_resource type="Script" uid="uid://dhe5men7n8lwi" path="res://game/room_template/level_template.gd" id="1_v7r8l"]
+[ext_resource type="Texture2D" uid="uid://dmake1vgiuhnr" path="res://game/room_template/assets/ruby.png" id="2_hmxk7"]
+[ext_resource type="PackedScene" uid="uid://bnvf11e7thsf8" path="res://game_objects/char_astronaut_2d/astronaut_2d.tscn" id="2_i811r"]
+[ext_resource type="Texture2D" uid="uid://b2gojktpksh2t" path="res://game/room_template/assets/start_spawn.png" id="3_x6nvl"]
+[ext_resource type="PackedScene" uid="uid://dnea7lkfoanie" path="res://core/components/ui/ui_fade_screen/fade_screen.tscn" id="4_hmxk7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmxk7"]
+texture = ExtResource("1_06ulx")
+texture_region_size = Vector2i(64, 64)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, -32, 32)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, -32, 32)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32)
+
+[sub_resource type="TileSet" id="TileSet_v7r8l"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_hmxk7")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7r8l"]
+texture = ExtResource("2_hmxk7")
+texture_region_size = Vector2i(64, 64)
+2:2/0 = 0
+2:2/0/probability = 0.02
+3:2/0 = 0
+3:2/0/probability = 0.02
+4:2/0 = 0
+4:2/0/probability = 0.02
+2:3/0 = 0
+2:3/0/probability = 0.02
+3:3/0 = 0
+5:3/size_in_atlas = Vector2i(2, 1)
+5:3/0 = 0
+5:3/0/texture_origin = Vector2i(-32, 0)
+5:5/size_in_atlas = Vector2i(2, 2)
+5:5/0 = 0
+5:5/0/texture_origin = Vector2i(-32, -32)
+3:5/size_in_atlas = Vector2i(1, 2)
+3:5/0 = 0
+3:5/0/texture_origin = Vector2i(0, -32)
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(32, 32)
+3:0/size_in_atlas = Vector2i(1, 2)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 32)
+5:0/size_in_atlas = Vector2i(2, 2)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(-32, 32)
+0:5/size_in_atlas = Vector2i(2, 2)
+0:5/0 = 0
+0:5/0/texture_origin = Vector2i(32, -32)
+7:0/size_in_atlas = Vector2i(2, 2)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(32, 32)
+12:0/size_in_atlas = Vector2i(2, 2)
+12:0/0 = 0
+12:0/0/texture_origin = Vector2i(-32, 32)
+10:0/size_in_atlas = Vector2i(1, 2)
+10:0/0 = 0
+10:0/0/texture_origin = Vector2i(0, 32)
+7:3/size_in_atlas = Vector2i(2, 1)
+7:3/0 = 0
+7:3/0/texture_origin = Vector2i(32, 0)
+12:3/size_in_atlas = Vector2i(2, 1)
+12:3/0 = 0
+12:3/0/texture_origin = Vector2i(-32, 0)
+10:5/size_in_atlas = Vector2i(1, 2)
+10:5/0 = 0
+10:5/0/texture_origin = Vector2i(0, -32)
+12:5/size_in_atlas = Vector2i(2, 2)
+12:5/0 = 0
+12:5/0/texture_origin = Vector2i(-32, -32)
+14:0/size_in_atlas = Vector2i(2, 2)
+14:0/0 = 0
+14:0/0/texture_origin = Vector2i(32, 32)
+16:0/size_in_atlas = Vector2i(2, 2)
+16:0/0 = 0
+16:0/0/texture_origin = Vector2i(-32, 32)
+14:2/size_in_atlas = Vector2i(2, 2)
+14:2/0 = 0
+14:2/0/texture_origin = Vector2i(32, -32)
+16:2/size_in_atlas = Vector2i(2, 2)
+16:2/0 = 0
+16:2/0/texture_origin = Vector2i(-32, -32)
+14:4/size_in_atlas = Vector2i(3, 3)
+14:4/0 = 0
+17:4/size_in_atlas = Vector2i(3, 3)
+17:4/0 = 0
+0:3/size_in_atlas = Vector2i(2, 1)
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(32, 0)
+7:5/size_in_atlas = Vector2i(2, 2)
+7:5/0 = 0
+7:5/0/texture_origin = Vector2i(32, -32)
+
+[sub_resource type="TileSet" id="TileSet_x6nvl"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_v7r8l")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3d6i"]
+texture = ExtResource("3_x6nvl")
+texture_region_size = Vector2i(64, 64)
+2:0/0 = 0
+2:0/0/custom_data_1 = 1
+2:1/0 = 0
+2:1/0/custom_data_0 = 1
+0:2/0 = 0
+0:2/0/custom_data_1 = 4
+1:2/0 = 0
+1:2/0/custom_data_0 = 4
+3:2/0 = 0
+3:2/0/custom_data_0 = 2
+4:2/0 = 0
+4:2/0/custom_data_1 = 2
+2:3/0 = 0
+2:3/0/custom_data_0 = 3
+2:4/0 = 0
+2:4/0/custom_data_1 = 3
+
+[sub_resource type="TileSet" id="TileSet_nk46t"]
+tile_size = Vector2i(64, 64)
+custom_data_layer_0/name = "spawn_points"
+custom_data_layer_0/type = 2
+custom_data_layer_1/name = "exits"
+custom_data_layer_1/type = 2
+sources/0 = SubResource("TileSetAtlasSource_k3d6i")
+
+[node name="level_template" type="Node2D"]
+script = ExtResource("1_v7r8l")
+
+[node name="tilemap_wall" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD/////AAADAAMAAAD//wwAAAADAAMAAAArABkAAAADAAMAAAArABgAAAADAAMAAAArABcAAAADAAMAAAArABYAAAADAAMAAAArABUAAAADAAMAAAArABQAAAADAAMAAAArABMAAAADAAMAAAArABIAAAADAAMAAAArABEAAAADAAMAAAArABAAAAADAAMAAAArAA8AAAADAAMAAAArAA4AAAADAAMAAAArAA0AAAADAAMAAAArAAwAAAADAAMAAAArAAsAAAADAAMAAAArAAoAAAADAAMAAAArAAkAAAADAAMAAAArAAgAAAADAAMAAAArAAcAAAADAAMAAAArAAYAAAADAAMAAAArAAUAAAADAAMAAAArAAQAAAADAAMAAAArAAMAAAADAAMAAAArAAIAAAADAAMAAAArAAEAAAADAAMAAAArAAAAAAADAAMAAAArAP//AAADAAMAAAAqAP//AAADAAMAAAApAP//AAADAAMAAAAoAP//AAADAAMAAAAnAP//AAADAAMAAAAmAP//AAADAAMAAAAlAP//AAADAAMAAAAkAP//AAADAAMAAAAjAP//AAADAAMAAAAiAP//AAADAAMAAAAhAP//AAADAAMAAAAgAP//AAADAAMAAAAfAP//AAADAAMAAAAeAP//AAADAAMAAAAdAP//AAADAAMAAAAcAP//AAADAAMAAAAbAP//AAADAAMAAAAaAP//AAADAAMAAAAZAP//AAADAAMAAAAYAP//AAADAAMAAAAXAP//AAADAAMAAAAWAP//AAADAAMAAAAVAP//AAADAAMAAAAUAP//AAADAAMAAAATAP//AAADAAMAAAASAP//AAADAAMAAAARAP//AAADAAMAAAAQAP//AAADAAMAAAAPAP//AAADAAMAAAAOAP//AAADAAMAAAANAP//AAADAAMAAAAMAP//AAADAAMAAAALAP//AAADAAMAAAAKAP//AAADAAMAAAAJAP//AAADAAMAAAAIAP//AAADAAMAAAAHAP//AAADAAMAAAAGAP//AAADAAMAAAAFAP//AAADAAMAAAAEAP//AAADAAMAAAADAP//AAADAAMAAAACAP//AAADAAMAAAABAP//AAADAAMAAAAAAP//AAADAAMAAAD//wAAAAADAAMAAAD//wEAAAADAAMAAAD//wIAAAADAAMAAAD//wMAAAADAAMAAAD//wQAAAADAAMAAAD//wUAAAADAAMAAAD//wYAAAADAAMAAAD//wcAAAADAAMAAAD//wgAAAADAAMAAAD//wkAAAADAAMAAAD//woAAAADAAMAAAD//wsAAAADAAMAAAD//w0AAAADAAMAAAD//w4AAAADAAMAAAD//w8AAAADAAMAAAD//xAAAAADAAMAAAD//xEAAAADAAMAAAD//xIAAAADAAMAAAD//xMAAAADAAMAAAD//xQAAAADAAMAAAD//xUAAAADAAMAAAD//xYAAAADAAMAAAD//xcAAAADAAMAAAD//xgAAAADAAMAAAD//xkAAAADAAMAAAAqABkAAAADAAMAAAApABkAAAADAAMAAAAoABkAAAADAAMAAAAnABkAAAADAAMAAAAmABkAAAADAAMAAAAlABkAAAADAAMAAAAkABkAAAADAAMAAAAjABkAAAADAAMAAAAiABkAAAADAAMAAAAhABkAAAADAAMAAAAgABkAAAADAAMAAAAfABkAAAADAAMAAAAeABkAAAADAAMAAAAdABkAAAADAAMAAAAcABkAAAADAAMAAAAbABkAAAADAAMAAAAaABkAAAADAAMAAAAZABkAAAADAAMAAAAYABkAAAADAAMAAAAXABkAAAADAAMAAAAWABkAAAADAAMAAAAVABkAAAADAAMAAAAUABkAAAADAAMAAAATABkAAAADAAMAAAASABkAAAADAAMAAAARABkAAAADAAMAAAAQABkAAAADAAMAAAAPABkAAAADAAMAAAAOABkAAAADAAMAAAANABkAAAADAAMAAAAMABkAAAADAAMAAAALABkAAAADAAMAAAAKABkAAAADAAMAAAAJABkAAAADAAMAAAAIABkAAAADAAMAAAAHABkAAAADAAMAAAAGABkAAAADAAMAAAAFABkAAAADAAMAAAAEABkAAAADAAMAAAADABkAAAADAAMAAAACABkAAAADAAMAAAABABkAAAADAAMAAAAAABkAAAADAAMAAAD+/wwAAAADAAMAAAAVAP7/AAADAAMAAAAUAP7/AAADAAMAAAAWAP7/AAADAAMAAAD+/wsAAAADAAMAAAD+/w0AAAADAAMAAAAEAP7/AAADAAMAAAAFAP7/AAADAAMAAAAGAP7/AAADAAMAAAAmAP7/AAADAAMAAAAlAP7/AAADAAMAAAAkAP7/AAADAAMAAAD+/wQAAAADAAMAAAD+/wUAAAADAAMAAAD+/wYAAAADAAMAAAD+/xIAAAADAAMAAAD+/xMAAAADAAMAAAD+/xQAAAADAAMAAAAsAAQAAAADAAMAAAAsAAUAAAADAAMAAAAsAAYAAAADAAMAAAAsAAsAAAADAAMAAAAsAAwAAAADAAMAAAAsAA0AAAADAAMAAAAsABIAAAADAAMAAAAsABMAAAADAAMAAAAsABQAAAADAAMAAAAUABoAAAADAAMAAAAVABoAAAADAAMAAAAWABoAAAADAAMAAAAEABoAAAADAAMAAAAFABoAAAADAAMAAAAGABoAAAADAAMAAAAkABoAAAADAAMAAAAlABoAAAADAAMAAAAmABoAAAADAAMAAAA=")
+tile_set = SubResource("TileSet_v7r8l")
+
+[node name="tilemap_wall_deco" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_x6nvl")
+
+[node name="tilemap_game_data" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_nk46t")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1379, 806)
+zoom = Vector2(0.47, 0.47)
+
+[node name="astronaut_2d" parent="." instance=ExtResource("2_i811r")]
+position = Vector2(-302, 112)
+
+[node name="fade_screen" parent="." instance=ExtResource("4_hmxk7")]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+scale = Vector2(2.2, 2.2)
+transform = Transform2D(2.2, 0, 0, 2.2, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[connection signal="died" from="astronaut_2d" to="." method="_on_astronaut_2d_died"]
+[connection signal="fade_out_completed" from="fade_screen" to="." method="_on_fade_screen_fade_out_completed"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8ho0g5n1uypa"]
+
+[ext_resource type="Texture2D" uid="uid://bye7kcd4caqvc" path="res://game_objects/vfx_lightning/assets/blitz1t.png" id="3_m48b2"]
+[ext_resource type="Texture2D" uid="uid://cmdaox7ta3gpy" path="res://game_objects/vfx_lightning/assets/blitz2t.png" id="4_ghftj"]
+[ext_resource type="Texture2D" uid="uid://dbyu5k0nwcp6" path="res://game_objects/vfx_lightning/assets/blitz3t.png" id="5_huese"]
+[ext_resource type="Texture2D" uid="uid://dn0n8gdlheu63" path="res://game_objects/vfx_lightning/assets/blitz4t.png" id="6_674gq"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_1pnw1"]
+frames = 4
+speed_scale = 12.0
+frame_0/texture = ExtResource("3_m48b2")
+frame_1/texture = ExtResource("4_ghftj")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("5_huese")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("6_674gq")
+frame_3/duration = 1.0
+
+[sub_resource type="Curve" id="Curve_eu8rx"]
+_data = [Vector2(0, 0), 0.0, 2.85656, 0, 0, Vector2(1e-05, 0), 4.47891, 4.47891, 0, 0, Vector2(0.553903, 1), -0.0712161, -0.0712161, 0, 0, Vector2(1, 0), -6.25607, 0.0, 0, 0]
+point_count = 4
+
+[node name="VFX_Lightning" type="Node2D"]
+
+[node name="Line" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, -1, 553)
+width = 78.605
+texture = SubResource("AnimatedTexture_1pnw1")
+texture_mode = 1
+
+[node name="Particle" type="CPUParticles2D" parent="."]
+position = Vector2(0, 557)
+amount = 20
+lifetime = 0.37
+direction = Vector2(0, -1)
+spread = 86.07
+gravity = Vector2(0, 100)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+scale_amount_min = 5.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_eu8rx")
