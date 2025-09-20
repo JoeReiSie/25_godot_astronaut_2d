@@ -1,17 +1,22 @@
 extends Node
 class_name CompFsmNode
 
-# The statemaschine must be started in _ready() of the player skript:
-#    fsm.start(self)
-# and the initial_state in the inspector must be set
+# Instruction:
+# - The statemaschine must be started in _ready() of the player skript:
+#    fsm.start()
+#
+# - The initial_state in the inspector must be set.
+# 
+# - In the state nodes you have to create a variable with the classname to use autocomplete:
+#    @export var parent : CharacterBody2D
 
 @export var initial_state: StateFsmNode
 var states_dict: Dictionary = {}
 var current_state: StateFsmNode = null
 
-func start(parent) -> void:
+func start() -> void:
 	for child in get_children():
-		child.parent = parent
+		child.fsm = self
 		if child is StateFsmNode:
 			states_dict[child.name.to_lower()] = child
 

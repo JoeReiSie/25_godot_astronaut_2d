@@ -1,5 +1,7 @@
 extends StateFsmNode
 
+@export var parent : PlayerAstronaut
+
 func enter():
 	parent.particel_enable(true)
 

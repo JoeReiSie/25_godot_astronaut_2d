@@ -1,5 +1,7 @@
 extends StateFsmNode
 
+@export var parent : PlayerAstronaut
+
 func enter():
 	pass
 

@@ -1,3 +1,4 @@
+class_name DungeonGenerator
 extends Node
 
 const PATH_LENGHT = 7

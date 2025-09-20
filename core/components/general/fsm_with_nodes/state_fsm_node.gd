@@ -1,7 +1,7 @@
 extends Node
 class_name StateFsmNode
 
-var parent
+var fsm
 
 func enter():
 	pass
@@ -19,4 +19,4 @@ func exit():
 	pass
 
 func change_state(next_state):
-	get_parent().change_state(self, next_state)
+	fsm.change_state(self, next_state)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://eh0uurr5ph7"]
+
+[ext_resource type="Script" uid="uid://lhldd7ohu0le" path="res://game/manager/game_manager.gd" id="1_270ne"]
+[ext_resource type="PackedScene" uid="uid://bbq67al5o4qlg" path="res://game/manager/dungeon_generator.tscn" id="2_k73sj"]
+
+[node name="Game_Manager" type="Node"]
+script = ExtResource("1_270ne")
+
+[node name="dungeon_generator" parent="." instance=ExtResource("2_k73sj")]

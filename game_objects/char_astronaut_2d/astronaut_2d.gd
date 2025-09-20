@@ -1,19 +1,25 @@
 extends CharacterBody2D
+class_name PlayerAstronaut
 
 signal died
 
 # --------Variables-----------------------------------------------------------
+enum QUICK_DIR {LEFT, RIGHT}
+
 @export var move_speed_max: float = 450		#maximal geschwindigkeit
-@export var move_acc: float = 1000				#beschleunigen
-@export var move_dec: float = 700				#abbremsen
+@export var move_acc: float = 1000			#beschleunigen
+@export var move_dec: float = 700			#abbremsen
 @export var fall_speed_max: float = 500 	#maximale fallgeschwindigkeit
-@export var fall_gravity: float = 600			#normale fallgeschwindigkeit
+@export var fall_gravity: float = 600		#normale fallgeschwindigkeit
 @export var fly_speed_max: float = 500  	#maximale fluggeschwindigkeit
-@export var fly_force: float = -600 	     		#beschleunigung
+@export var fly_force: float = -600 	    #beschleunigung
 
 var look_direction = -1
 var is_hit = false
 var enable = true
+const ROTATION_ANGLE = 10
+const ROTATION_SPEED = 45
+const ROTATION_SPEED_RESET = 25
 
 @onready var sprite: AnimatedSprite2D = %Sprite
 @onready var character: Marker2D = $char
@@ -27,7 +33,7 @@ var enable = true
 
 # --------Functions-----------------------------------------------------------
 func _ready() -> void:
-	fsm.start(self)
+	fsm.start()
 
 func _physics_process(delta: float) -> void:
 	Debug.print_value("FPS", Engine.get_frames_per_second())
@@ -36,22 +42,22 @@ func _physics_process(delta: float) -> void:
 
 func rotate_character(delta: float, input: float):
 	if input > 0:
-		character.rotation_degrees = move_toward(character.rotation_degrees, input * 10, 43 * delta)
+		character.rotation_degrees = move_toward(character.rotation_degrees, input * ROTATION_ANGLE, ROTATION_SPEED * delta)
 		if look_direction < 0:
 			look_direction = 1
 			animation_player.play("rotation")
 	elif input < 0:
-		character.rotation_degrees = move_toward(character.rotation_degrees, input * 10, 43 * delta)
+		character.rotation_degrees = move_toward(character.rotation_degrees, input * ROTATION_ANGLE, ROTATION_SPEED * delta)
 		if look_direction > 0:
 			look_direction = -1
 			animation_player.play_backwards("rotation")
 	else:
-		character.rotation_degrees = move_toward(character.rotation_degrees, 0, 25 * delta)
+		character.rotation_degrees = move_toward(character.rotation_degrees, 0, ROTATION_SPEED_RESET * delta) 
 
-func quick_direction(is_looking_left: bool):
-	if is_looking_left:
+func quick_direction(dir: QUICK_DIR):
+	if dir == QUICK_DIR.RIGHT:
 		look_direction = 1
-		animation_player. play("rotation")
+		animation_player.play("rotation")
 		animation_player.seek(animation_player.get_animation("rotation").length, true)
 	else:
 		look_direction = -1
@@ -77,10 +83,8 @@ func get_collision():
 func _on_hitarea_area_entered(area: Area2D) -> void:
 	is_hit = true
 
-
 func _on_hitarea_body_entered(body: Node2D) -> void:
 	is_hit = true
-
 
 func _on_explosion_finished() -> void:
 	died.emit()

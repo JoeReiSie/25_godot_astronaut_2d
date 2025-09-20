@@ -11,7 +11,7 @@ var player_exit = 0
 @export var debug_start : direction = direction.NORTH
 @onready var fade_screen: UiFadeScreen = %fade_screen
 @onready var tilemap_game_data: TileMapLayer = $tilemap_game_data
-@onready var astronaut_2d: CharacterBody2D = $astronaut_2d
+@onready var astronaut_2d: PlayerAstronaut = $astronaut_2d
 
 func _ready() -> void:
 	get_tree().paused = false
@@ -39,9 +39,9 @@ func initialize(dir: direction):
 	var spawn_pos = get_spawn_point(dir)
 	astronaut_2d.position = spawn_pos
 	if dir == direction.EAST:
-		astronaut_2d.quick_direction(false)
+		astronaut_2d.quick_direction(astronaut_2d.QUICK_DIR.LEFT)
 	else:
-		astronaut_2d.quick_direction(true)	
+		astronaut_2d.quick_direction(astronaut_2d.QUICK_DIR.RIGHT)
 		
 func get_spawn_point(dir: direction) -> Vector2:
 	for coords in tilemap_game_data.get_used_cells():

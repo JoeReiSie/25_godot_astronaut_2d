@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8ho0g5n1uypa"]
+[gd_scene load_steps=11 format=3 uid="uid://c8ho0g5n1uypa"]
 
 [ext_resource type="Script" uid="uid://co6y6qkx0bmrj" path="res://game_objects/vfx_lightning/lightning.gd" id="1_m48b2"]
 [ext_resource type="Texture2D" uid="uid://bye7kcd4caqvc" path="res://game_objects/vfx_lightning/assets/blitz1t.png" id="3_m48b2"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dbyu5k0nwcp6" path="res://game_objects/vfx_lightning/assets/blitz3t.png" id="5_huese"]
 [ext_resource type="Texture2D" uid="uid://dn0n8gdlheu63" path="res://game_objects/vfx_lightning/assets/blitz4t.png" id="6_674gq"]
 [ext_resource type="Texture2D" uid="uid://2i2160g76rta" path="res://game_objects/vfx_lightning/assets/teslaspule.png" id="6_ghftj"]
+[ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/components/2d/comp_2d_hitbox/comp_2d_hitbox.gd" id="7_ghftj"]
+
+[sub_resource type="Curve" id="Curve_eu8rx"]
+_data = [Vector2(0, 0), 0.0, 2.85656, 0, 0, Vector2(1e-05, 0), 4.47891, 4.47891, 0, 0, Vector2(0.553903, 1), -0.0712161, -0.0712161, 0, 0, Vector2(1, 0), -6.25607, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_1pnw1"]
 frames = 4
@@ -18,26 +23,35 @@ frame_2/duration = 1.0
 frame_3/texture = ExtResource("6_674gq")
 frame_3/duration = 1.0
 
-[sub_resource type="Curve" id="Curve_eu8rx"]
-_data = [Vector2(0, 0), 0.0, 2.85656, 0, 0, Vector2(1e-05, 0), 4.47891, 4.47891, 0, 0, Vector2(0.553903, 1), -0.0712161, -0.0712161, 0, 0, Vector2(1, 0), -6.25607, 0.0, 0, 0]
-point_count = 4
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huese"]
+resource_local_to_scene = true
+size = Vector2(35, 640)
 
 [node name="VFX_Lightning" type="Node2D"]
 script = ExtResource("1_m48b2")
 
-[node name="Teslaspule" type="Sprite2D" parent="."]
-position = Vector2(0, -31)
-texture = ExtResource("6_ghftj")
+[node name="Particle_Prepare" type="CPUParticles2D" parent="."]
+position = Vector2(0, -52)
+amount = 4
+lifetime = 0.37
+direction = Vector2(0, -1)
+spread = 86.07
+gravity = Vector2(0, 100)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+scale_amount_min = 5.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_eu8rx")
 
 [node name="Line" type="Line2D" parent="."]
 texture_repeat = 2
-points = PackedVector2Array(-5, -56, 0, -1000)
+points = PackedVector2Array(-5, -56, 0, -640)
 width = 78.605
 texture = SubResource("AnimatedTexture_1pnw1")
 texture_mode = 1
 
 [node name="Particle" type="CPUParticles2D" parent="."]
-position = Vector2(0, -1000)
+position = Vector2(0, -640)
 rotation = 3.14159
 amount = 20
 lifetime = 0.37
@@ -50,8 +64,20 @@ scale_amount_min = 5.0
 scale_amount_max = 15.0
 scale_amount_curve = SubResource("Curve_eu8rx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Comp2dHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("7_ghftj")
+metadata/_custom_type_script = "uid://wujupbok4pj0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Comp2dHitbox"]
+position = Vector2(0, -320)
+shape = SubResource("RectangleShape2D_huese")
+
+[node name="Teslaspule" type="Sprite2D" parent="."]
+position = Vector2(0, -31)
+texture = ExtResource("6_ghftj")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, -56)
-target_position = Vector2(0, -1000)
+position = Vector2(0, -32)
+target_position = Vector2(0, -640)

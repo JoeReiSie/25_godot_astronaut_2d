@@ -7,7 +7,7 @@ var current_scene: Node = null
 var current_scene_path: String = ""
 var current_direction = null
 var create_new_dungeon : bool = true
-@onready var dungeon_generator: Node = $dungeon_generator
+@onready var dungeon_generator: DungeonGenerator = $dungeon_generator 
 
 
 func _ready() -> void:

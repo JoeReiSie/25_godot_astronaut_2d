@@ -1,14 +1,13 @@
 extends StateFsmNode
 
+@export var parent : PlayerAstronaut
 
 func enter():
 	parent.ring_enable(true)
 
-
 func physics_update(_delta):
 	# Inputs
 	var inputs = parent.comp_input_keyboard.get_input()
-	
 	# Gravity
 	
 	# Movement
